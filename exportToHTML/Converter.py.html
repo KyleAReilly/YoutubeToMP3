@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Converter.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Converter.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">email.mime </span><span class="s0">import </span><span class="s1">base</span>
+<span class="s0">from </span><span class="s1">pytube </span><span class="s0">import </span><span class="s1">YouTube</span>
+<span class="s0">import </span><span class="s1">os</span>
+<span class="s1">print(</span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">YouTube To MP3 Format</span><span class="s0">\n</span><span class="s2">&quot;</span><span class="s1">)</span>
+
+<span class="s1">URL = input(</span><span class="s2">&quot;Enter Video URL:&quot;</span><span class="s1">)</span>
+<span class="s1">yt = YouTube(URL)</span>
+
+<span class="s0">try</span><span class="s1">:</span>
+    <span class="s1">print(</span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Downloading....&quot;</span><span class="s1">)</span>
+    <span class="s1">video = yt.streams.filter(only_audio=</span><span class="s0">True</span><span class="s1">).first()</span>
+    <span class="s1">out_file = video.download()</span>
+
+    <span class="s1">base</span><span class="s0">, </span><span class="s1">ext = os.path.splitext(out_file)</span>
+    <span class="s1">new_file = base + </span><span class="s2">&quot;.mp3&quot;</span>
+    <span class="s1">os.rename(out_file</span><span class="s0">, </span><span class="s1">new_file)</span>
+    <span class="s1">print(</span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Successfully Downloaded</span><span class="s0">\n</span><span class="s2">&quot;</span><span class="s1">)</span>
+
+<span class="s0">except</span><span class="s1">:</span>
+    <span class="s1">print(</span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Something Went wrong! Please try again!&quot;</span><span class="s1">)</span></pre>
+</body>
+</html>
